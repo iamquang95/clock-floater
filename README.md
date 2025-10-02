@@ -75,7 +75,7 @@ cargo run --release
 ## Requirements
 
 - macOS (uses macOS system sounds for alerts)
-- Rust 1.70 or later
+- Rust 1.85 or later
 
 ## License
 
