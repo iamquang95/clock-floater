@@ -13,7 +13,7 @@ struct Particle {
 fn main() -> Result<(), eframe::Error> {
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-            .with_inner_size([300.0, 180.0])
+            .with_inner_size([300.0, 195.0])
             .with_always_on_top()
             .with_decorations(false)
             .with_transparent(true)
@@ -166,6 +166,13 @@ impl eframe::App for ClockFloaterApp {
         egui::CentralPanel::default()
             .frame(egui::Frame::default().inner_margin(egui::Margin::same(15.0)))
             .show(ctx, |ui| {
+            // Close button in top left
+            ui.with_layout(egui::Layout::left_to_right(egui::Align::Min), |ui| {
+                if ui.small_button("x").clicked() {
+                    ctx.send_viewport_cmd(egui::ViewportCommand::Close);
+                }
+            });
+
             // Make the window draggable by clicking anywhere
             if ui.input(|i| i.pointer.primary_down()) {
                 if let Some(_pos) = ui.input(|i| i.pointer.interact_pos()) {
